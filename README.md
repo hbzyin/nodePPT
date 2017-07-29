@@ -1,13 +1,5 @@
 
 [slide]
-
-# 效果图(nodeppt运行下图片不可见)
-
-<img src="./img/showpics/view1.png" width="400" height="200"/>
-&nbsp;
-<img src="./img/showpics/view2.png" width="400" height="200"/>
-
-[slide]
 # 项目说明
 
 - 这是用[markdown](http://markdown-here.com/)和[nodeppt](https://github.com/ksky521/nodeppt)完成的网页版演示文档PPT。
