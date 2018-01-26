@@ -67,7 +67,8 @@ date: 2018年01月26日
 
 ## 为什么要使用electron
 ----
-<img src="/img/electron/duibi.png" width="1000" height="1400" background-color:#fff/>
+
+<img src="/img/electron/compare.png" width="1000" height="1400" background-color:#fff/>
 
 
 
@@ -84,10 +85,12 @@ date: 2018年01月26日
 
 - 系统无差异：开发者无需考虑客户端系统平台差异、不用考虑浏览器的兼容、支持后台热更新
 
+> PS:开发桌面应用要更轻松，因为根本不要考虑兼容性的问题，而且很多最新的chrome特性
 
+    ①.通常来说，electron在稳定版的 Chrome 发布后一到两周内,会更新 Electron 内的 Chrome 版本。
 
+    ②.最新版的 Node.js 发布后一个月左右将 Electron 更新到这个版本的 Node.js。使用的是 Chrome 浏览器中附带的 V8 引擎, Electron 内往往已经有了部分新版本 Node.js 才有的崭新特性。
 
-[slide]
 
 [slide]
 
