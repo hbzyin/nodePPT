@@ -35,13 +35,16 @@ date: 2018年01月26日
 
 <img src="/img/electron/components.jpeg" width="600" height="200" background-color:#fff/>
 
-- 一个基于JavaScript的桌面软件开发库 {:&.flexbox.vleft}
+- 构建跨平台桌面应用程序的一个库 {:&.fadeIn}
+- HTML + CSS + JavaScript
+- Chromium + Node.js ==> Mac && Win && Linux && APP Store
 
-    - 构建跨平台桌面应用程序的一个lib
+- 不要考虑兼容性，更多最新的chrome特性
 
-    - HTML + CSS + JavaScript
+    ①Chromium :1-2周
 
-    - Chromium + Node.js ==>  Mac &&  Windows  &&  Linux && APP Store
+    ②Node.js :1个月
+
 
 
 [slide]
@@ -50,19 +53,18 @@ date: 2018年01月26日
 
 - 与web开发、原生本地软件开发的区别 {:&.flexbox.vleft}
 
-|| 技术栈|优点 |特点     | 依赖系统|浏览器支持|维护性|
-|---|---|---  |------     |---|----|---|
-| Web |Ng、Vue、React|轻客户端、网页应用|传统网站开发技术|NO|YES|依赖团队人员技术栈|
-| PWA |H5|可靠、快速、粘性|前端技术开发、轻客户端，各浏览器及版本差异较大，支持性逐渐增高；发展前景好|NO|YES|依赖技术栈|
-| 桌面应用 |electron、NW|本地应用、web技术 |前端开发技术 、不依赖系统平台、无需考虑浏览器及版本差异性，一个内核封装|NO|NO|一套技术站、维护性较高|
-| Native |RN、IONIC、Swift...|移动端 |移动端、不同移动端框架技术栈 不同的系统对各种不同的框架支持个不相同|YES|NO|不同技术栈、开发人员少|
+|| 技术栈|优点 |开发成本|设备访问能力|系统依赖|浏览器依赖|维护性|特点 |
+|---|---|---  |:-----:|:---:|---|---   |---|----|---|
+| Web |Ng、Vue、React|轻客户端、网页应用|低|低|NO|YES|依赖团队人员技术栈|传统网站开发技术，不依赖系统平台；需考虑个浏览器的差异性；集中部署更新|
+| PWA |H5、SW|可靠、快速、粘性|低|低|NO|YES|依赖技术栈|前端技术开发、轻客户端，各浏览器及版本差异较大，支持性逐渐增高；发展前景好|
+| 桌面应用 |electron、NW|本地应用、web技术|低|高 |NO|NO|一套技术站、维护性较高|前端开发技术 、不依赖系统平台、无需考虑浏览器及版本差异性，一个内核封装|
+| Native |RN、IONIC、Swift...|移动端|高|高|YES|NO|不同技术栈、开发人员少|移动端、不同移动端框架技术栈 不同的系统对各种不同的框架支持个不相同，更新升级复杂|
 
-[PWA官网](https://developers.google.com/web/progressive-web-apps/)、
-[PWA相关资料](https://lavas.baidu.com/mip/doc/README)
 [slide]
 [note]
 
-
+[PWA官网](https://developers.google.com/web/progressive-web-apps/)、
+[PWA相关资料](https://lavas.baidu.com/mip/doc/README)
 [/note]
 
 ## 为什么要使用electron
@@ -70,26 +72,20 @@ date: 2018年01月26日
 
 <img src="/img/electron/compare.png" width="1000" height="1400" background-color:#fff/>
 
-
-
 [slide]
 
 # electron应用程序优点
 ----
 
-- 用户体验：客户端是一款独立的软件，综合体验比网站好；特定人群的使用习惯；可以使用系统工具;本地安装，缩短了启动加载时间
+- <span class="text-warning">用户体验</span>：客户端独立、本地安装、启动加载时间短、综合体验比网站好、特定人群的使用习惯、
 
-- 用户粘性：是另一种产品形式，也能提供更加可靠的服务，入口常住，易触达，用户留存;桌面应用的时间要比使用web版平均多34%
+- <span class="text-warning">用户粘性</span>：是另一种产品形式，服务更可靠，入口常住，易触达，用户留存;
 
-- 开发角度：技术栈统一：前端开发JS+nodeJS、独立桌面应用、原生系统API、程序崩溃报告
+- <span class="text-warning">开发角度</span>：技术栈统一(JS+nodeJS)、独立桌面应用、原生系统API、程序崩溃报告
 
-- 系统无差异：开发者无需考虑客户端系统平台差异、不用考虑浏览器的兼容、支持后台热更新
+- <span class="text-warning">系统无差异</span>：客户端系统平台差异、不用考虑浏览器的兼容、支持后台热更新
 
-> PS:开发桌面应用要更轻松，因为根本不要考虑兼容性的问题，而且很多最新的chrome特性
-
-    ①.通常来说，electron在稳定版的 Chrome 发布后一到两周内,会更新 Electron 内的 Chrome 版本。
-
-    ②.最新版的 Node.js 发布后一个月左右将 Electron 更新到这个版本的 Node.js。使用的是 Chrome 浏览器中附带的 V8 引擎, Electron 内往往已经有了部分新版本 Node.js 才有的崭新特性。
+<span class="red">PS:桌面应用的时间要比使用web版平均多34%</span>  {:&.flexbox.vleft}
 
 
 [slide]
@@ -101,8 +97,8 @@ Chrome内核封装应用程序
 </div>
 
 - 两个进程：
-    - 主进程main：每个Electron应用的入口，控制应用程序的声名周期；可调用原生系统API,内置Node API
-    - 渲染进程renderer：应用程序的窗口，无本地资源访问权限
+    - <span class="text-warning">主进程main</span>：每个Electron应用的入口，控制应用程序的声名周期；可调用原生系统API,内置Node API
+    - <span class="text-warning">渲染进程renderer</span>：应用程序的窗口，无本地资源访问权限
 - 通讯机制：
     - 主进程、渲染进程两者之间是通过ipc进行通讯。main端有ipcMain， 渲染进程端有 ipcRenderer，分别用于通讯
 -
@@ -116,6 +112,20 @@ Chrome内核封装应用程序
      </div>
 </div>
 
+[slide]
+
+
+# 主要概念
+
+-----
+<img src="/img/electron/concept.png" width="1200" height="1000" background-color:#fff/>
+
+
+[note]
+app:应用程序模块，常用生命周期钩子①will-finish-lanuching；②ready；③will-all-closed；④before-quit；⑤will-quit；⑥quit
+BrowserWindow：事件钩子：①closed；②focus；③show；④hide；⑤maxmize；⑥minimize；…
+
+[/note]
 [slide]
 
 
@@ -140,7 +150,8 @@ Chrome内核封装应用程序
 [note]
 1. Github desktop为什么使用electron重写
 > 之前开发不同平台的应用需要使用不同平台的技术，及同一个应用，要维护两套技术栈；
-> 比如开发mac上的native app可以使用Xcode, Swift, and AppKit；开发windows上native app可以使用Visual Studio, C#, and WPF or UWP。
+> 比如开发mac上的native app可以使用Xcode, Swift, and AppKit；
+> 开发windows上native app可以使用Visual Studio, C#, and WPF or UWP。
 > 开发阶段，不需要重新编译、打开app，而只是修改完代码，重新加载就可以看到改变
 
 [/note]
